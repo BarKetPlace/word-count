@@ -5,7 +5,7 @@ rule compile_results:
         'processed_data/isles.dat',
         'processed_data/last.dat',
     output: 'results/results.txt'
-    shell: 'python source/zipf_test.py processed_data/abyss.dat processed_data/isles.dat processed_data/last.dat > results/results.txt'
+    shell: 'python {input} > {output}'
 
 rule alldata:
      input:
@@ -16,24 +16,10 @@ rule alldata:
 
 rule count_words:
     input:
-        'data/isles.txt',
-        'source/wordcount.py'
-    output: 'processed_data/isles.dat'
-    shell: 'python source/wordcount.py data/isles.txt processed_data/isles.dat'
-
-rule count_words_abyss:
-     input:
-        'source/wordcount.py',
-        'data/abyss.txt'
-     output: 'processed_data/abyss.dat'
-     shell:  'python source/wordcount.py data/abyss.txt processed_data/abyss.dat'
-
-rule count_words_last:
-     input:
-        'source/wordcount.py',
-        'data/last.txt'
-     output: 'processed_data/last.dat'
-     shell:  'python source/wordcount.py data/last.txt processed_data/last.dat'
+        wc = 'source/wordcount.py',
+        book = 'data/{file}.txt'
+    output: 'processed_data/{file}.dat'
+    shell: 'python {input.wc} {input.book} {output}'
 
 rule clean:
     shell:

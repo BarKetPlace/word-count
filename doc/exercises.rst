@@ -52,5 +52,5 @@ Extra-Advanced
 --------------
 
 - Here's some content ...
-# trying different bullet markers
+- trying different bullet markers
 
