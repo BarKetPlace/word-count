@@ -1,8 +1,18 @@
+rule compile_results:
+    input:
+        'source/zipf_test.py',
+        'processed_data/abyss.dat',
+        'processed_data/isles.dat',
+        'processed_data/last.dat',
+    output: 'results/results.txt'
+    shell: 'python source/zipf_test.py processed_data/abyss.dat processed_data/isles.dat processed_data/last.dat > results/results.txt'
+
 rule alldata:
      input:
          'processed_data/isles.dat',
          'processed_data/abyss.dat',
-         'processed_data/last.dat'
+         'processed_data/last.dat',
+         'results/results.txt'
 
 rule count_words:
     input:
@@ -26,5 +36,6 @@ rule count_words_last:
      shell:  'python source/wordcount.py data/last.txt processed_data/last.dat'
 
 rule clean:
-    shell: 'rm -f processed_data/*.dat'
+    shell:
+        'rm -f processed_data/*.dat & rm -f results/results.txt'
 
