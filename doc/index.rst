@@ -15,4 +15,10 @@ word-count
    usage.rst
    credit.rst
    exercises.rst
+  
+Additional
+==========
+.. toctree::
+   :maxdepth: 2
+   
    supplementary.rst
