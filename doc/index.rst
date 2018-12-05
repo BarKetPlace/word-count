@@ -16,4 +16,5 @@ word-count
    usage.rst
    credit.rst
    exercises.rst
+   dino.rst
    feature-b.rst
